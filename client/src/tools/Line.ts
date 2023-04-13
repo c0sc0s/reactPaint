@@ -6,8 +6,8 @@ export default class Line extends Tool {
   private saved;
   private startX;
   private startY;
-  constructor(canvas) {
-    super(canvas);
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id);
     this.listen();
   }
 

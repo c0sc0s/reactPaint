@@ -3,11 +3,27 @@ import { clearSreen } from "../utils/utils";
 
 class CanvasState {
   canvas = null;
+  socket = null;
+  sessionid = null;
   undoList = [];
   redoList = [];
+  username = "";
   constructor() {
     makeAutoObservable(this);
   }
+
+  setUsername(username) {
+    this.username = username;
+  }
+
+  setSessionId(id) {
+    this.sessionid = id;
+  }
+
+  setSoket(socket) {
+    this.socket = socket;
+  }
+
   setCanvas(canvas: any) {
     this.canvas = canvas;
   }

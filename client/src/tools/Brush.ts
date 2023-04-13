@@ -1,11 +1,12 @@
+import canvasState from "../store/canvasState";
 import { getRelativePos } from "../utils/utils";
 import Tool from "./Tool";
 
 export default class Brush extends Tool {
   private mouseDown;
 
-  constructor(canvas) {
-    super(canvas);
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id);
     this.listen();
   }
 
@@ -15,9 +16,9 @@ export default class Brush extends Tool {
     this.canvas.onmouseup = this.mouseUpHandler.bind(this);
   }
 
-  draw(x, y) {
-    this.ctx.lineTo(x, y);
-    this.ctx.stroke();
+  static draw(ctx, x, y) {
+    ctx.lineTo(x, y);
+    ctx.stroke();
   }
 
   mouseUpHandler(e) {
@@ -34,7 +35,17 @@ export default class Brush extends Tool {
   mouseMoveHandler(e) {
     if (this.mouseDown) {
       const { x, y } = getRelativePos(e);
-      this.draw(x, y);
+      this.socket.send(
+        JSON.stringify({
+          type: "draw",
+          id: canvasState.sessionid,
+          figure: {
+            type: "brush",
+            x,
+            y,
+          },
+        })
+      );
     }
   }
 }

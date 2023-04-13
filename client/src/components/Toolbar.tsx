@@ -17,24 +17,24 @@ export default function Toolbar() {
     <div className="toolbar">
       <button
         className="toolbar-btn brush"
-        onClick={() => toolState.setTool(new Brush(canvasState.canvas))}
+        // onClick={() => toolState.setTool(new Brush(canvasState.canvas))}
       />
       <button
         className="toolbar-btn rect"
-        onClick={() => toolState.setTool(new Rect(canvasState.canvas))}
+        // onClick={() => toolState.setTool(new Rect(canvasState.canvas))}
       />
       <button
         className="toolbar-btn circle"
-        onClick={() => toolState.setTool(new Circle(canvasState.canvas))}
+        // onClick={() => toolState.setTool(new Circle(canvasState.canvas))}
       />
       <button
         className="toolbar-btn eraser"
-        onClick={() => toolState.setTool(new Eraser(canvasState.canvas))}
+        // onClick={() => toolState.setTool(new Eraser(canvasState.canvas))}
       />
       <button
         className="toolbar-btn line"
         onClick={() => {
-          toolState.setTool(new Line(canvasState.canvas));
+          // toolState.setTool(new Line(canvasState.canvas));
         }}
       />
       <input

@@ -6,8 +6,8 @@ export default class Rect extends Tool {
   private startX;
   private startY;
   private saved;
-  constructor(canvas) {
-    super(canvas);
+  constructor(canvas, socket, id) {
+    super(canvas, socket, id);
     this.listen();
   }
 

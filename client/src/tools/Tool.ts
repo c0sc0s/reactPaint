@@ -1,10 +1,14 @@
 export default class Tool {
   canvas = null;
   ctx = null;
-
-  constructor(canvas) {
+  socket = null;
+  id = null;
+  constructor(canvas, socket, id) {
     this.canvas = canvas;
+    this.socket = socket;
+    this.id = id;
     this.ctx = canvas.getContext("2d");
+    this.destoryEvents();
   }
 
   set fillColor(color) {
