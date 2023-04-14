@@ -6,6 +6,7 @@ import canvasState from "../store/canvasState";
 import toolState from "../store/toolState";
 import "../styles/canvas.scss";
 import Brush from "../tools/Brush";
+import Rect from "../tools/Rect";
 
 const Canvas = observer(() => {
   const canvasRef: any = useRef();
@@ -22,7 +23,6 @@ const Canvas = observer(() => {
       const socket = new WebSocket(`ws://localhost:${PORT}`);
       canvasState.setSoket(socket);
       canvasState.setSessionId(id);
-      toolState.setTool(new Brush(canvasRef.current, socket, id));
       socket.onopen = () => {
         socket.send(
           JSON.stringify({
@@ -52,6 +52,20 @@ const Canvas = observer(() => {
     switch (figure.type) {
       case "brush":
         Brush.draw(ctx, figure.x, figure.y);
+        break;
+      case "finish":
+        ctx.beginPath();
+        break;
+      case "rect":
+        Rect.staticDraw(
+          ctx,
+          figure.x,
+          figure.y,
+          figure.width,
+          figure.height,
+          figure.penInfo
+        );
+        break;
     }
   };
 

@@ -13,15 +13,42 @@ export default function Toolbar() {
     toolState.setStrokeColor(color);
   };
 
+  const downLoad = () => {
+    const dataUrl = canvasState.canvas.toDataURL();
+    const a = document.createElement("a");
+    a.href = dataUrl;
+    a.download = canvasState.sessionid + ".jpg";
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   return (
     <div className="toolbar">
       <button
         className="toolbar-btn brush"
-        // onClick={() => toolState.setTool(new Brush(canvasState.canvas))}
+        onClick={() =>
+          toolState.setTool(
+            new Brush(
+              canvasState.canvas,
+              canvasState.socket,
+              canvasState.setSessionId
+            )
+          )
+        }
       />
       <button
         className="toolbar-btn rect"
-        // onClick={() => toolState.setTool(new Rect(canvasState.canvas))}
+        onClick={() =>
+          toolState.setTool(
+            new Rect(
+              canvasState.canvas,
+              canvasState.socket,
+              canvasState.setSessionId
+            )
+          )
+        }
       />
       <button
         className="toolbar-btn circle"
@@ -44,7 +71,7 @@ export default function Toolbar() {
       />
       <button className="toolbar-btn undo" onClick={() => canvasState.undo()} />
       <button className="toolbar-btn redo" onClick={() => canvasState.redo()} />
-      <button className="toolbar-btn save" />
+      <button className="toolbar-btn save" onClick={() => downLoad()} />
     </div>
   );
 }

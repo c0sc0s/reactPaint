@@ -38,6 +38,15 @@ export default class Circle extends Tool {
 
   mouseUpHandler(e) {
     this.mouseDown = false;
+    this.socket.send(
+      JSON.stringify({
+        type: "draw",
+        id: this.id,
+        figure: {
+          type: "finish",
+        },
+      })
+    );
   }
 
   mouseDownHandler(e) {
