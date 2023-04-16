@@ -1,0 +1,78 @@
+// 针对所有元素
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// a 标签重置
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// 列表重置
+ul,
+ol {
+  list-style: none;
+}
+
+// 图片重置
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// 表单元素重置
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+// 按钮重置
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+// 表格重置
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 文字重置
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+// 链接重置
+a:hover,
+a:active {
+  text-decoration: none;
+}
