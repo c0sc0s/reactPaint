@@ -1,4 +1,4 @@
-import { updateImage } from "@/api/imageApi";
+import { updateImage } from "@/apis/imageApi";
 import { CanvasType, CanvasWSMethods } from "@/types/canvas";
 import { defaultSend } from "@/ws/senders";
 import { makeAutoObservable } from "mobx";
