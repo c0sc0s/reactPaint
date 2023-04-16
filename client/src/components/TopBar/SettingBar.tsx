@@ -1,4 +1,4 @@
-import settingbar from "../scss/Topbar.module.scss";
+import settingbar from "./Topbar.module.scss";
 
 function SettingBar() {
   return (

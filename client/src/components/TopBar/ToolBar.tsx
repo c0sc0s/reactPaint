@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { Icon } from "@mui/material";
-import topbar from "../scss/TopBar.module.scss";
+import topbar from "./TopBar.module.scss";
 
 export default function ToolBar() {
   return (

@@ -8,7 +8,9 @@ const Home: FC = () => {
     <>
       <ToolBar></ToolBar>
       <SettingBar></SettingBar>
-      <Canvas></Canvas>
+      <div className="container">
+        <Canvas></Canvas>
+      </div>
     </>
   );
 };
