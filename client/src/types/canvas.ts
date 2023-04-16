@@ -1,3 +1,6 @@
+import { ToolType } from "./tools";
+import { UserType } from "./user";
+
 export type CanvasType = HTMLCanvasElement | null;
 
 export enum CanvasWSMethods {
