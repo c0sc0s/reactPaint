@@ -9,10 +9,10 @@ export enum ToolNames {
 
 export interface FigureType {
   type: ToolNames;
-  x: number;
-  y: number;
-  width: number;
-  height: number;
+  scaleFactor?: number;
+  lineWidth?: number;
+  fillColor?: string;
+  strokeColor?: string;
 }
 
 export interface RectType extends FigureType {
