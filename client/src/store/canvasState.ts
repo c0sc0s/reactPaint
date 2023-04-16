@@ -1,3 +1,4 @@
+import { updateImage } from "@/api/imageApi";
 import { CanvasType, CanvasWSMethods } from "@/types/canvas";
 import { defaultSend } from "@/ws/senders";
 import { makeAutoObservable } from "mobx";
@@ -89,10 +90,35 @@ class CanvasState {
       this.canvas?.width as number,
       this.canvas?.height as number
     );
+    const updatedDataUrl = this.canvas?.toDataURL() as string;
 
     toast.success("已清空画布");
 
-    updateImage();
+    updateImage(this.sessionId, updatedDataUrl);
+  }
+
+  public undo() {
+    const currentDataUrl = this.canvas?.toDataURL() as string;
+
+    if (this.undoList.length > 0) {
+      const undoDataUrl = this.undoList.pop() as string;
+      this.addRedo(currentDataUrl);
+
+      this.rewriteCanvas(this.canvas, undoDataUrl);
+      updateImage(this.sessionId, undoDataUrl);
+    }
+  }
+
+  public redo() {
+    const currentDataUrl = this.canvas?.toDataURL() as string;
+
+    if (this.redoList.length > 0) {
+      const redoDataUrl = this.redoList.pop() as string;
+      this.addUndo(currentDataUrl);
+
+      this.rewriteCanvas(this.canvas, redoDataUrl);
+      updateImage(this.sessionId, redoDataUrl);
+    }
   }
 }
 
