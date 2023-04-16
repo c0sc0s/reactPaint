@@ -22,7 +22,7 @@ export default class SimpleToolHandler extends Tool {
     this.listen();
   }
 
-  private listen() {
+  public listen() {
     if (this.canvas) {
       this.canvas.onmousemove = this.mouseMoveHandler.bind(this);
       this.canvas.onmousedown = this.mouseDownHandler.bind(this);
