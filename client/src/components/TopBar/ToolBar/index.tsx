@@ -1,21 +1,17 @@
 import Button from "@mui/material/Button";
 import { Icon } from "@mui/material";
-import topbar from "./TopBar.module.scss";
+import topbar from "../TopBar.module.scss";
 import { observer } from "mobx-react-lite";
 import { ChangeEvent, FC, useEffect } from "react";
 import toolState from "@/store/toolState";
 import canvasState from "@/store/canvasState";
 import { Brush, Circle, Eraser, Line, Rect } from "@/tool";
 import { ToolNames } from "@/types/tools";
-import style from "./TopBar.module.scss";
-import SaveButton from "./ui/SaveButton";
+import style from "../TopBar.module.scss";
+import SaveButton from "../ui/SaveButton";
 
 const ToolBar: FC = observer(() => {
   const currentToolName = toolState.currentToolName;
-  useEffect(() => {
-    console.log(currentToolName);
-  });
-
   const { socket, sessionId } = canvasState;
   const changeColor = (e: ChangeEvent<HTMLInputElement>) => {
     const color = e.target.value;

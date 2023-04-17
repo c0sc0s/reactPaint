@@ -1,0 +1,40 @@
+.settingBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: (576px)) {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__input {
+    border: 1px solid var(--light-gray-color);
+    border-radius: 5px;
+    padding: 3px;
+    transition: border-color var(--transition);
+    margin-right: 5px;
+    width: 60px;
+    margin-right: 20px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+  }
+}
+
+.color {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-left: 10px;
+}

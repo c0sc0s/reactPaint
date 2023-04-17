@@ -1,0 +1,10 @@
+.share {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90px;
+  margin-right: 10px;
+
+  &__btn {
+    margin-left: 6px;
+  }
+}

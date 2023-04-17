@@ -1,0 +1,9 @@
+.users {
+  display: flex;
+  justify-content: space-evenly;
+  width: 120px;
+
+  &__btn {
+    margin-left: 6px;
+  }
+}
