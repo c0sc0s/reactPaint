@@ -32,19 +32,7 @@ export default function LoginModal() {
     console.log("submit");
 
     try {
-      const response = await toast.promise(
-        loginUser(localUsername, id),
-        {
-          loading: "Загрузка...",
-          success: <span>Подключено</span>,
-          error: (err) => <span>{err.response.data.message}</span>,
-        },
-        {
-          style: {
-            width: "250px",
-          },
-        }
-      );
+      const response = await loginUser(localUsername, id);
 
       canvasState.setUsername(localUsername);
       canvasState.setAuth(true);
