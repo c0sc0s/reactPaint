@@ -1,14 +1,5 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Icon,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Alert, Box, Button, Icon, Modal, TextField } from "@mui/material";
 import { FormEvent, useEffect, useState } from "react";
-import { toast } from "react-hot-toast";
 import style from "./LoginModal.module.scss";
 import { loginUser } from "@/apis/userApi";
 import canvasState from "@/store/canvasState";
