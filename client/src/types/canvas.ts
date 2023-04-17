@@ -4,7 +4,7 @@ import { UserType } from "./user";
 export type CanvasType = HTMLCanvasElement | null;
 
 export enum CanvasWSMethods {
-  CONNET = "connection",
+  CONNECT = "connection",
   DISCONNECT = "disconnect",
   DRAW = "draw",
   CLEAR = "clear",
