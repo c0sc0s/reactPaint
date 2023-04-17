@@ -1,64 +1,101 @@
-import { Box, Modal, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Icon,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { FormEvent, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import style from "./LoginModal.module.scss";
+import { loginUser } from "@/apis/userApi";
+import canvasState from "@/store/canvasState";
+import usersState from "@/store/userState";
 
 export default function LoginModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const [localUsername, setLocalUsername] = useState("");
   const [isError, setIsError] = useState(false);
   // const { id } = useParams() as { id: string };
+  const id = "123";
 
   useEffect(() => {
     //todo: refactor to do more judiciously
-    setIsModalOpen(true);
+    // setIsModalOpen(true);
   });
 
   // todo: form validation
-  // const connectHandler = async (e?: FormEvent) => {
-  //   e?.preventDefault();
+  const connectHandler = async (e?: FormEvent) => {
+    e?.preventDefault();
+    console.log("submit");
 
-  //   if (localUsername) {
-  //     const response = await toast.promise(
-  //       loginUser(localUsername, id),
-  //       {
-  //         loading: "Загрузка...",
-  //         success: <span>Подключено</span>,
-  //         error: (err) => <span>{err.response.data.message}</span>,
-  //       },
-  //       {
-  //         style: {
-  //           width: "250px",
-  //         },
-  //       }
-  //     );
+    try {
+      const response = await toast.promise(
+        loginUser(localUsername, id),
+        {
+          loading: "Загрузка...",
+          success: <span>Подключено</span>,
+          error: (err) => <span>{err.response.data.message}</span>,
+        },
+        {
+          style: {
+            width: "250px",
+          },
+        }
+      );
 
-  //     canvasState.setUsername(localUsername);
-  //     canvasState.setAuth(true);
-  //     usersState.setUsers(response.users);
+      canvasState.setUsername(localUsername);
+      canvasState.setAuth(true);
+      usersState.setUsers(response.users);
 
-  //     setIsModalOpen(false);
-  //     setIsError(false);
-  //     setLocalUsername("");
-  //   } else {
-  //     setIsError(true);
-  //   }
-  // };
+      setIsModalOpen(false);
+      console.log(isModalOpen);
+      setIsError(false);
+      setLocalUsername("");
+    } catch {
+      setIsError(true);
+    }
+  };
 
   return (
     <div>
       <Modal
         open={isModalOpen}
-        // onClose={handleClose}
+        onClose={() => {}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        className={style.modalWrapper}
       >
-        <Box>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+        <Box className={style.modal}>
+          {isError ? (
+            <Alert variant="standard" color="warning">
+              名称重复，请重新输入
+            </Alert>
+          ) : (
+            <Alert variant="standard" color="info">
+              请输入您的名称.
+            </Alert>
+          )}
+          <form onSubmit={connectHandler}>
+            <div className={style.inputField}>
+              <TextField
+                id="username"
+                label="username"
+                variant="outlined"
+                className={style.input}
+                value={localUsername}
+                onChange={(e) => {
+                  setLocalUsername(e.target.value);
+                }}
+              ></TextField>
+
+              <Button variant="text" type="submit" className={style.button}>
+                <Icon>done</Icon>
+              </Button>
+            </div>
+          </form>
         </Box>
       </Modal>
     </div>

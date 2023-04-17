@@ -1,66 +1,38 @@
-@import "@/scss/reset";
-
-.loginModalContent {
+.modal {
+  background: #fff;
+  height: 300px;
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 3px #605656;
   display: flex;
+  align-items: center;
   flex-direction: column;
+  justify-content: space-evenly;
+}
 
-  &__title {
-    margin-bottom: 10px;
-    font-size: 28px;
-    text-align: center;
+.modalWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    @media (max-width: (576px)) {
-      margin-bottom: 16px;
-      font-size: 20px;
-    }
+.modalTitle {
+  margin-top: 15px;
+  font-size: 25px;
+  text-align: center;
 
-    @extend .header-reset;
-  }
-
-  &__input {
-    display: block;
-    margin-bottom: 10px;
-    border: 1px solid var(--light-gray-color);
-    border-radius: 5px;
-    padding: 10px;
-    width: 100%;
-
-    @extend .input-reset;
-  }
-
-  &__btn {
-    margin-left: auto;
-    border-radius: 5px;
-    padding: 10px 12px;
+  @media (max-width: (576px)) {
+    margin-bottom: 16px;
+    font-size: 20px;
   }
 }
 
-.error {
-  border-color: var(--danger-color);
-  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
-}
+.inputField {
+  display: flex;
+  align-items: center;
+  justify-self: center;
 
-@keyframes shake {
-  8%,
-  41% {
-    transform: translateX(-8px);
-  }
-
-  25%,
-  58% {
-    transform: translateX(8px);
-  }
-
-  75% {
-    transform: translateX(-4px);
-  }
-
-  92% {
-    transform: translateX(4px);
-  }
-
-  0%,
-  100% {
-    transform: translateX(0);
+  .button {
+    margin-left: 10px;
   }
 }

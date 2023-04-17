@@ -21,4 +21,5 @@ class UserState {
   }
 }
 
-export default new UserState();
+const usersState = new UserState();
+export default usersState;
